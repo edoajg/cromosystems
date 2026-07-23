@@ -89,6 +89,29 @@
     });
   });
 
+  /* --------------------------------------------- figuras de método animadas --- */
+
+  /* Las dos figuras `data-animate` se dibujan una sola vez al entrar en pantalla.
+     Todo el movimiento vive en styles.css; aquí solo se colocan las clases:
+     `anim-ready` habilita el estado oculto inicial e `is-visible` dispara el
+     dibujo. Sin IntersectionObserver no se oculta nada y las figuras quedan
+     completas y estáticas, igual que sin JavaScript. */
+  var diagrams = $$('.diagram[data-animate]');
+  if (diagrams.length && 'IntersectionObserver' in window) {
+    var diagramObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        diagramObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.35 });
+
+    diagrams.forEach(function (fig) {
+      fig.classList.add('anim-ready');
+      diagramObserver.observe(fig);
+    });
+  }
+
   /* ------------------------------------------------------------- formulario --- */
 
   var form = $('#lead-form');

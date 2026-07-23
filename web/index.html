@@ -355,28 +355,33 @@
       <!-- Figuras de método: SVG inline, abstractas y sin datos de proyecto. La regla
            de honestidad exige el pie con FIGURA NN y la frase de no correspondencia. -->
       <div class="figures">
-        <figure class="diagram">
+        <figure class="diagram" data-animate>
+          <!-- `data-animate`: dibujo secuencial en orden físico (índice `--i` por
+               elemento, trazos con pathLength="1") resuelto en styles.css y app.js.
+               Los dos `dg-pulse` recorren la rama respaldada solo tras el dibujo. -->
           <svg class="diagram__svg" viewBox="0 0 320 296" role="img" aria-labelledby="fig-01-title fig-01-desc">
             <title id="fig-01-title">Unilineal abstracto de alimentación y respaldo por alcance</title>
             <desc id="fig-01-desc">La red alimenta un tablero con protecciones. Desde el tablero, una parte de los circuitos queda sin respaldo y otra, definida por el alcance del proyecto, pasa por un respaldo antes de llegar a los circuitos respaldados. Sin marcas, modelos ni cifras.</desc>
-            <path class="dg-wire" d="M160 40 V64"/>
-            <path class="dg-wire" d="M88 96 V128"/>
-            <path class="dg-wire dg-wire--accent" d="M240 96 V128"/>
-            <path class="dg-wire dg-wire--accent" d="M240 176 V208"/>
-            <rect class="dg-node" x="16" y="8" width="288" height="32" rx="2"/>
-            <rect class="dg-node dg-node--key" x="16" y="64" width="288" height="32" rx="2"/>
-            <rect class="dg-node" x="16" y="128" width="144" height="48" rx="2"/>
-            <rect class="dg-node dg-node--accent" x="176" y="128" width="128" height="48" rx="2"/>
-            <rect class="dg-node" x="176" y="208" width="128" height="48" rx="2"/>
-            <text x="160" y="28" font-size="13" text-anchor="middle">ALIMENTACIÓN DE RED</text>
-            <text class="dg-label--key" x="160" y="84" font-size="13" text-anchor="middle">TABLERO · PROTECCIONES</text>
-            <text x="88" y="148" font-size="13" text-anchor="middle">CIRCUITOS</text>
-            <text x="88" y="166" font-size="13" text-anchor="middle">SIN RESPALDO</text>
-            <text class="dg-label--key" x="240" y="148" font-size="13" text-anchor="middle">RESPALDO</text>
-            <text x="240" y="166" font-size="11" text-anchor="middle">SEGÚN ALCANCE</text>
-            <text x="240" y="228" font-size="13" text-anchor="middle">CIRCUITOS</text>
-            <text x="240" y="246" font-size="13" text-anchor="middle">RESPALDADOS</text>
-            <text x="160" y="284" font-size="11" text-anchor="middle">SIN MARCAS · SIN MODELOS · SIN CIFRAS</text>
+            <path class="dg-wire" d="M160 40 V64" pathLength="1" style="--i:1"/>
+            <path class="dg-wire" d="M88 96 V128" pathLength="1" style="--i:3"/>
+            <path class="dg-wire dg-wire--accent" d="M240 96 V128" pathLength="1" style="--i:5"/>
+            <path class="dg-wire dg-wire--accent" d="M240 176 V208" pathLength="1" style="--i:7"/>
+            <rect class="dg-node" x="16" y="8" width="288" height="32" rx="2" pathLength="1" style="--i:0"/>
+            <rect class="dg-node dg-node--key" x="16" y="64" width="288" height="32" rx="2" pathLength="1" style="--i:2"/>
+            <rect class="dg-node" x="16" y="128" width="144" height="48" rx="2" pathLength="1" style="--i:4"/>
+            <rect class="dg-node dg-node--accent" x="176" y="128" width="128" height="48" rx="2" pathLength="1" style="--i:6"/>
+            <rect class="dg-node" x="176" y="208" width="128" height="48" rx="2" pathLength="1" style="--i:8"/>
+            <path class="dg-pulse" d="M240 96 V128" pathLength="1"/>
+            <path class="dg-pulse" d="M240 176 V208" pathLength="1" style="--p:1"/>
+            <text x="160" y="28" font-size="13" text-anchor="middle" style="--i:0">ALIMENTACIÓN DE RED</text>
+            <text class="dg-label--key" x="160" y="84" font-size="13" text-anchor="middle" style="--i:2">TABLERO · PROTECCIONES</text>
+            <text x="88" y="148" font-size="13" text-anchor="middle" style="--i:4">CIRCUITOS</text>
+            <text x="88" y="166" font-size="13" text-anchor="middle" style="--i:4">SIN RESPALDO</text>
+            <text class="dg-label--key" x="240" y="148" font-size="13" text-anchor="middle" style="--i:6">RESPALDO</text>
+            <text x="240" y="166" font-size="11" text-anchor="middle" style="--i:6">SEGÚN ALCANCE</text>
+            <text x="240" y="228" font-size="13" text-anchor="middle" style="--i:8">CIRCUITOS</text>
+            <text x="240" y="246" font-size="13" text-anchor="middle" style="--i:8">RESPALDADOS</text>
+            <text x="160" y="284" font-size="11" text-anchor="middle" style="--i:9">SIN MARCAS · SIN MODELOS · SIN CIFRAS</text>
           </svg>
           <figcaption class="diagram__caption">
             <span class="mono-key">FIGURA 01 · UNILINEAL DE ALCANCE</span>
@@ -384,38 +389,41 @@
           </figcaption>
         </figure>
 
-        <figure class="diagram">
+        <figure class="diagram" data-animate>
+          <!-- `data-animate`: dibujo secuencial desde el control local hacia afuera.
+               Las líneas de dependencia externa conservan sus unidades (sin
+               pathLength) para que el patrón discontinuo derive en styles.css. -->
           <svg class="diagram__svg" viewBox="0 0 320 288" role="img" aria-labelledby="fig-02-title fig-02-desc">
             <title id="fig-02-title">Mapa de red abstracto: control local y dependencia externa</title>
             <desc id="fig-02-desc">Dentro del límite de operación local, un control local se conecta con acceso, riego, iluminación y sensores mediante líneas continuas. Internet y un servicio externo quedan fuera del límite, unidos por líneas discontinuas que señalan dependencia externa. Sin direcciones ni topología real.</desc>
-            <text class="dg-label--accent" x="8" y="32" font-size="11">OPERACIÓN LOCAL</text>
-            <rect class="dg-bound" x="8" y="40" width="200" height="200" rx="2"/>
-            <path class="dg-wire" d="M108 140 L62 70"/>
-            <path class="dg-wire" d="M108 140 L154 70"/>
-            <path class="dg-wire" d="M108 140 L62 210"/>
-            <path class="dg-wire" d="M108 140 L154 210"/>
-            <path class="dg-wire dg-wire--ext" d="M148 140 H220 V116 H232"/>
-            <path class="dg-wire dg-wire--ext" d="M220 140 V196 H232"/>
-            <rect class="dg-node" x="24" y="56" width="76" height="28" rx="2"/>
-            <rect class="dg-node" x="116" y="56" width="76" height="28" rx="2"/>
-            <rect class="dg-node dg-node--key" x="68" y="116" width="80" height="48" rx="2"/>
-            <rect class="dg-node" x="20" y="196" width="84" height="28" rx="2"/>
-            <rect class="dg-node" x="116" y="196" width="76" height="28" rx="2"/>
-            <rect class="dg-node" x="232" y="96" width="80" height="40" rx="2"/>
-            <rect class="dg-node" x="232" y="176" width="80" height="40" rx="2"/>
-            <text x="62" y="74" font-size="11" text-anchor="middle">ACCESO</text>
-            <text x="154" y="74" font-size="11" text-anchor="middle">RIEGO</text>
-            <text class="dg-label--key" x="108" y="136" font-size="12" text-anchor="middle">CONTROL</text>
-            <text class="dg-label--key" x="108" y="152" font-size="12" text-anchor="middle">LOCAL</text>
-            <text x="62" y="214" font-size="11" text-anchor="middle">ILUMINACIÓN</text>
-            <text x="154" y="214" font-size="11" text-anchor="middle">SENSORES</text>
-            <text x="272" y="112" font-size="11" text-anchor="middle">INTERNET</text>
-            <text x="272" y="128" font-size="11" text-anchor="middle">ISP</text>
-            <text x="272" y="192" font-size="11" text-anchor="middle">SERVICIO</text>
-            <text x="272" y="208" font-size="11" text-anchor="middle">EXTERNO</text>
-            <text x="272" y="236" font-size="10" text-anchor="middle">DEPENDENCIA</text>
-            <text x="272" y="250" font-size="10" text-anchor="middle">EXTERNA</text>
-            <text x="160" y="276" font-size="11" text-anchor="middle">SIN DIRECCIONES NI TOPOLOGÍA DE CLIENTE</text>
+            <text class="dg-label--accent" x="8" y="32" font-size="11" style="--i:0">OPERACIÓN LOCAL</text>
+            <rect class="dg-bound" x="8" y="40" width="200" height="200" rx="2" pathLength="1" style="--i:0"/>
+            <path class="dg-wire" d="M108 140 L62 70" pathLength="1" style="--i:2"/>
+            <path class="dg-wire" d="M108 140 L154 70" pathLength="1" style="--i:4"/>
+            <path class="dg-wire" d="M108 140 L62 210" pathLength="1" style="--i:6"/>
+            <path class="dg-wire" d="M108 140 L154 210" pathLength="1" style="--i:8"/>
+            <path class="dg-wire dg-wire--ext" d="M148 140 H220 V116 H232" style="--i:10"/>
+            <path class="dg-wire dg-wire--ext" d="M220 140 V196 H232" style="--i:12"/>
+            <rect class="dg-node" x="24" y="56" width="76" height="28" rx="2" pathLength="1" style="--i:3"/>
+            <rect class="dg-node" x="116" y="56" width="76" height="28" rx="2" pathLength="1" style="--i:5"/>
+            <rect class="dg-node dg-node--key" x="68" y="116" width="80" height="48" rx="2" pathLength="1" style="--i:1"/>
+            <rect class="dg-node" x="20" y="196" width="84" height="28" rx="2" pathLength="1" style="--i:7"/>
+            <rect class="dg-node" x="116" y="196" width="76" height="28" rx="2" pathLength="1" style="--i:9"/>
+            <rect class="dg-node" x="232" y="96" width="80" height="40" rx="2" pathLength="1" style="--i:11"/>
+            <rect class="dg-node" x="232" y="176" width="80" height="40" rx="2" pathLength="1" style="--i:13"/>
+            <text x="62" y="74" font-size="11" text-anchor="middle" style="--i:3">ACCESO</text>
+            <text x="154" y="74" font-size="11" text-anchor="middle" style="--i:5">RIEGO</text>
+            <text class="dg-label--key" x="108" y="136" font-size="12" text-anchor="middle" style="--i:1">CONTROL</text>
+            <text class="dg-label--key" x="108" y="152" font-size="12" text-anchor="middle" style="--i:1">LOCAL</text>
+            <text x="62" y="214" font-size="11" text-anchor="middle" style="--i:7">ILUMINACIÓN</text>
+            <text x="154" y="214" font-size="11" text-anchor="middle" style="--i:9">SENSORES</text>
+            <text x="272" y="112" font-size="11" text-anchor="middle" style="--i:11">INTERNET</text>
+            <text x="272" y="128" font-size="11" text-anchor="middle" style="--i:11">ISP</text>
+            <text x="272" y="192" font-size="11" text-anchor="middle" style="--i:13">SERVICIO</text>
+            <text x="272" y="208" font-size="11" text-anchor="middle" style="--i:13">EXTERNO</text>
+            <text x="272" y="236" font-size="10" text-anchor="middle" style="--i:14">DEPENDENCIA</text>
+            <text x="272" y="250" font-size="10" text-anchor="middle" style="--i:14">EXTERNA</text>
+            <text x="160" y="276" font-size="11" text-anchor="middle" style="--i:14">SIN DIRECCIONES NI TOPOLOGÍA DE CLIENTE</text>
           </svg>
           <figcaption class="diagram__caption">
             <span class="mono-key">FIGURA 02 · MAPA DE RED</span>

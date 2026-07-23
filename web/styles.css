@@ -791,6 +791,103 @@ input:hover, select:hover, textarea:hover { border-color: var(--cromo); }
 .diagram__caption { margin: 1rem 0 0; font-size: 0.85rem; color: var(--text); max-width: 56ch; }
 .diagram__caption .mono-key { display: block; margin: 0 0 0.35rem; }
 
+/* Figuras de método animadas (`data-animate`): paleta scoped a estas dos láminas
+   y monolínea de 1,5 px. El dibujo secuencial usa trazos con `pathLength="1"` y
+   un índice de orden físico por elemento (`--i`). `app.js` coloca `anim-ready`
+   solo cuando existe IntersectionObserver e `is-visible` una única vez al entrar
+   la figura en pantalla: sin JavaScript, sin observador o con movimiento
+   reducido, las figuras quedan completas y estáticas desde el primer render. */
+.diagram[data-animate] {
+  --dg-ink:   #C6CCD4;
+  --dg-line:  #6E7681;
+  --dg-soft:  #566070;
+  --dg-amber: #E8A855;
+}
+.diagram[data-animate] .diagram__svg text { fill: var(--dg-ink); }
+.diagram[data-animate] .dg-label--key { fill: var(--dg-ink); }
+.diagram[data-animate] .dg-label--accent { fill: var(--dg-amber); }
+.diagram[data-animate] .dg-node { stroke: var(--dg-line); stroke-width: 1.5; }
+.diagram[data-animate] .dg-node--key { stroke: var(--dg-ink); }
+.diagram[data-animate] .dg-node--accent { stroke: var(--dg-amber); }
+.diagram[data-animate] .dg-wire { stroke: var(--dg-line); stroke-width: 1.5; }
+.diagram[data-animate] .dg-wire--accent { stroke: var(--dg-amber); }
+.diagram[data-animate] .dg-wire--ext { stroke: var(--dg-soft); }
+.diagram[data-animate] .dg-bound { stroke: var(--dg-soft); stroke-width: 1.5; }
+
+/* Pulso de potencia activa de la figura 01. Con `pathLength="1"` el patrón
+   0.3/1 deja el destello fuera del trazo (offset 0.3): solo se ve mientras la
+   animación lo recorre, nunca en el estado estático. */
+.diagram[data-animate] .dg-pulse {
+  fill: none;
+  stroke: var(--dg-amber);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 0.3 1;
+  stroke-dashoffset: 0.3;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Estado previo al dibujo. Solo aplica bajo `anim-ready`: si app.js no corre,
+     nada queda oculto. */
+  .diagram[data-animate].anim-ready .dg-wire:not(.dg-wire--ext),
+  .diagram[data-animate].anim-ready .dg-node,
+  .diagram[data-animate].anim-ready .dg-bound {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  .diagram[data-animate].anim-ready .dg-node { fill-opacity: 0; }
+  .diagram[data-animate].anim-ready .diagram__svg text,
+  .diagram[data-animate].anim-ready .dg-wire--ext { opacity: 0; }
+
+  /* Dibujo secuencial en orden físico, una sola pasada (sin repetición). */
+  .diagram[data-animate].is-visible .dg-wire:not(.dg-wire--ext),
+  .diagram[data-animate].is-visible .dg-node,
+  .diagram[data-animate].is-visible .dg-bound {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 420ms ease-out;
+    transition-delay: calc(var(--i, 0) * 120ms);
+  }
+  .diagram[data-animate].is-visible .dg-node {
+    fill-opacity: 1;
+    transition: stroke-dashoffset 420ms ease-out, fill-opacity 420ms ease-out;
+    transition-delay: calc(var(--i, 0) * 120ms);
+  }
+  /* El límite de operación local es el trazo más largo: un poco más de tiempo. */
+  .diagram[data-animate].is-visible .dg-bound { transition-duration: 720ms; }
+  .diagram[data-animate].is-visible .diagram__svg text,
+  .diagram[data-animate].is-visible .dg-wire--ext {
+    opacity: 1;
+    transition: opacity 360ms ease-out;
+    transition-delay: calc(var(--i, 0) * 120ms + 80ms);
+  }
+
+  /* Figura 01: pulso ámbar por la rama respaldada, solo después del dibujo
+     (el retardo supera el final de la secuencia; `--p` desfasa el segundo tramo). */
+  .diagram[data-animate].is-visible .dg-pulse {
+    animation: dg-flow 2.2s linear infinite;
+    animation-delay: calc(1.7s + var(--p, 0) * 0.55s);
+  }
+  @keyframes dg-flow {
+    0%   { stroke-dashoffset: 0.3; opacity: 1; }
+    55%  { stroke-dashoffset: -1; opacity: 1; }
+    100% { stroke-dashoffset: -1; opacity: 1; }
+  }
+
+  /* Figura 02: la dependencia externa deriva en discontinuo de bajo contraste.
+     El patrón 4/4 tiene período 8: el ciclo cierra sin salto. */
+  .diagram[data-animate].is-visible .dg-wire--ext {
+    animation: dg-drift 1.6s linear infinite;
+  }
+  @keyframes dg-drift {
+    to { stroke-dashoffset: -8; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diagram[data-animate] .dg-pulse { display: none; }
+}
+
 /* Zona de imagen propia futura: trama de plano en trazos planos sobre Vanta.
    No es una imagen ni un degradado; queda vacía hasta producir material propio. */
 .photo-slot {
