@@ -29,11 +29,9 @@
 
   var SPEED      = 0.70;  // velocidad global del flujo
   var ZOOM       = 1.45;  // escala de los remolinos
-  var BAND_ANGLE = -24;   // inclinación de la banda diagonal, en grados
-  var BAND_WIDTH = 0.44;  // grosor de la banda
   var GLITCH     = 0.35;  // ráfagas de glitch, contenidas (0 = sin glitch)
   var CHROMA     = 0.10;  // aberración cromática de los filamentos
-  var GAIN       = 0.70;  // intensidad de la banda sobre el fondo Vanta
+  var GAIN       = 0.85;  // intensidad global del campo sobre el fondo Vanta
 
   /* Resolución interna conservadora: el hero es decorativo y no debe competir
      por GPU con el resto de la página. En pantallas angostas baja todavía más. */
@@ -50,7 +48,7 @@
     powerPreference: 'low-power'
   };
 
-  /** Único camino de degradación: el CSS local dibuja la banda y oculta el canvas. */
+  /** Único camino de degradación: el CSS local dibuja el campo y oculta el canvas. */
   function useFallback() {
     hero.classList.add('is-fallback');
   }
@@ -83,14 +81,12 @@
 
     'uniform vec2  uRes;',
     'uniform float uTime;',
-    'uniform vec2  uDir;',
     'uniform float uZoom;',
-    'uniform float uBandW;',
     'uniform float uGlitch;',
     'uniform float uChroma;',
     'uniform float uGain;',
 
-    /* Paleta neón de la banda y fondo Vanta de la pieza (#08090B). */
+    /* Paleta neón del campo líquido y fondo Vanta de la pieza (#08090B). */
     '#define NEON_MAGENTA vec3(1.00, 0.17, 0.84)',
     '#define NEON_CYAN    vec3(0.05, 0.94, 1.00)',
     '#define NEON_VIOLET  vec3(0.45, 0.24, 1.00)',
@@ -155,18 +151,13 @@
     '  );',
     '  float f = fbm(p + 2.6 * r);',
 
-    /* Banda diagonal con bordes ondulados. */
-    '  float band = dot(uv, uDir);',
-    '  band += (q.x - 0.5) * 0.55 + (r.y - 0.5) * 0.35;',
-    '  float mask = 1.0 - smoothstep(0.02, uBandW, abs(band));',
-    '  mask = pow(mask, 1.35);',
-
-    /* Color: eje violeta → magenta → cian. */
-    '  float s1 = smoothstep(0.22, 0.78, f);',
-    '  float s2 = smoothstep(0.30, 0.82, r.y);',
+    /* Color del campo continuo: eje violeta → magenta → cian sobre todo el
+       lienzo, con energía alta pero sin picos duros. */
+    '  float s1 = smoothstep(0.20, 0.80, f);',
+    '  float s2 = smoothstep(0.28, 0.84, r.y);',
     '  vec3 col = mix(NEON_VIOLET, NEON_MAGENTA, s1);',
     '  col = mix(col, NEON_CYAN, s2 * 0.8);',
-    '  col *= 0.22 + 1.05 * f;',
+    '  col *= 0.30 + 1.30 * f;',
 
     /* Filamentos con aberración cromática (fringe RGB). */
     '  float a1 = f * 11.0 + r.x * 6.0 - t * 2.2;',
@@ -174,17 +165,16 @@
     '  vec3 fil1 = vec3(ridge(a1 + uChroma, 3.0), ridge(a1, 3.0), ridge(a1 - uChroma, 3.0));',
     '  vec3 fil2 = vec3(ridge(a2 + uChroma, 6.0), ridge(a2, 6.0), ridge(a2 - uChroma, 6.0)) * 0.55;',
     '  vec3 specTint = mix(vec3(1.0, 0.65, 1.0), vec3(0.6, 1.0, 1.0), s1);',
-    '  col += (fil1 + fil2) * specTint * 1.05;',
+    '  col += (fil1 + fil2) * specTint;',
 
-    /* Fondo Vanta con una bruma neón apenas perceptible. */
+    /* Bruma neón de base sobre Vanta: incluso las zonas calmas del líquido
+       conservan color, para que el campo siga presente detrás del texto. */
     '  float haze = fbm(uv * 2.2 + 11.0);',
     '  vec3 bg = VANTA;',
-    '  bg += NEON_VIOLET * haze * 0.020;',
-    '  bg += NEON_CYAN * pow(haze, 3.0) * 0.020;',
+    '  bg += NEON_VIOLET * haze * 0.045;',
+    '  bg += NEON_CYAN * pow(haze, 3.0) * 0.040;',
 
-    /* La banda se SUMA al fondo: en los bordes el hero cierra en Vanta puro y no
-       aparece un salto de color contra el resto de la página. */
-    '  vec3 fx = col * mask * 1.10;',
+    '  vec3 fx = col;',
 
     /* Línea de barrido durante la ráfaga de glitch. */
     '  if (burst > 0.5) {',
@@ -192,11 +182,15 @@
     '    fx += NEON_CYAN * exp(-abs(uv.y - yLine) * 150.0) * 0.45 * uGlitch;',
     '  }',
 
-    /* Viñeta: apaga la banda hacia los bordes del hero. */
-    '  float vig = smoothstep(1.45, 0.30, length(uv));',
-    '  fx *= mix(0.30, 1.0, vig);',
+    /* Viñeta suave: atenúa apenas los bordes para empalmar con el Vanta del
+       resto de la página sin apagar el campo en ninguna zona del hero. */
+    '  float vig = smoothstep(1.65, 0.35, length(uv));',
+    '  fx *= mix(0.55, 1.0, vig);',
 
+    /* Hombro tonal exponencial: permite subir la energía sin recorte duro; los
+       picos de los filamentos se comprimen en vez de saturar en blanco. */
     '  vec3 outCol = bg + fx * uGain;',
+    '  outCol = 1.0 - exp(-outCol * 1.15);',
     '  gl_FragColor = vec4(outCol, 1.0);',
     '}'
   ].join('\n');
@@ -234,17 +228,12 @@
 
   var uRes    = gl.getUniformLocation(prog, 'uRes');
   var uTime   = gl.getUniformLocation(prog, 'uTime');
-  var uDir    = gl.getUniformLocation(prog, 'uDir');
   var uZoom   = gl.getUniformLocation(prog, 'uZoom');
-  var uBandW  = gl.getUniformLocation(prog, 'uBandW');
   var uGlitch = gl.getUniformLocation(prog, 'uGlitch');
   var uChroma = gl.getUniformLocation(prog, 'uChroma');
   var uGain   = gl.getUniformLocation(prog, 'uGain');
 
-  var angle = (90 - BAND_ANGLE) * Math.PI / 180;
-  gl.uniform2f(uDir, Math.cos(angle), Math.sin(angle));
   gl.uniform1f(uZoom, ZOOM);
-  gl.uniform1f(uBandW, BAND_WIDTH);
   gl.uniform1f(uGlitch, GLITCH);
   gl.uniform1f(uChroma, CHROMA);
   gl.uniform1f(uGain, GAIN);
