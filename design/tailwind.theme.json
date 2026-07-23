@@ -1,0 +1,84 @@
+{
+  "theme": {
+    "extend": {
+      "colors": {
+        "vanta": "#08090b",
+        "grafito": "#15181d",
+        "acero": "#3b424c",
+        "cromo": "#c3c9d2",
+        "especular": "#f2f5f9",
+        "senal": "#4de3e8",
+        "brasa": "#e39a4a",
+        "linea-fuerte": "#6f7378"
+      },
+      "fontFamily": {
+        "display-xl": [
+          "Archivo Expanded, Archivo, sans-serif"
+        ],
+        "display": [
+          "Archivo Expanded, Archivo, sans-serif"
+        ],
+        "titulo": [
+          "IBM Plex Sans, sans-serif"
+        ],
+        "cuerpo": [
+          "IBM Plex Sans, sans-serif"
+        ],
+        "dato": [
+          "JetBrains Mono, monospace"
+        ]
+      },
+      "fontSize": {
+        "display-xl": [
+          "3rem",
+          {
+            "letterSpacing": "0.08em",
+            "fontWeight": "600"
+          }
+        ],
+        "display": [
+          "2rem",
+          {
+            "letterSpacing": "0.08em",
+            "fontWeight": "600"
+          }
+        ],
+        "titulo": [
+          "1.5rem",
+          {
+            "letterSpacing": "0em",
+            "fontWeight": "600"
+          }
+        ],
+        "cuerpo": [
+          "1rem",
+          {
+            "letterSpacing": "0em",
+            "fontWeight": "400"
+          }
+        ],
+        "dato": [
+          "0.8125rem",
+          {
+            "letterSpacing": "0.02em",
+            "fontWeight": "400"
+          }
+        ]
+      },
+      "borderRadius": {
+        "base": "2px"
+      },
+      "spacing": {
+        "1": "8px",
+        "2": "16px",
+        "3": "24px",
+        "4": "32px",
+        "6": "48px",
+        "8": "64px",
+        "12": "96px",
+        "16": "128px",
+        "grid": "8px"
+      }
+    }
+  }
+}

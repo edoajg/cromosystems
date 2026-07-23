@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Cromo Systems">
+  <title>Cromo Systems</title>
+  <!-- Marca original mínima: arco abierto (C de Cromo) sobre fondo Vanta y una
+       barra en Señal que cierra el circuito. Sin degradados. -->
+  <rect width="32" height="32" rx="4" fill="#08090B"/>
+  <path d="M21.3 10.7A7.5 7.5 0 1 0 21.3 21.3"
+        fill="none" stroke="#F2F5F9" stroke-width="2.4" stroke-linecap="square"/>
+  <path d="M19 16h7" fill="none" stroke="#4DE3E8" stroke-width="2.4" stroke-linecap="square"/>
+</svg>

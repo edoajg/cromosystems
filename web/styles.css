@@ -1,0 +1,846 @@
+/* ============================================================================
+   Cromo Systems — hoja de estilos del MVP estático
+   ----------------------------------------------------------------------------
+   Reglas del manual de marca aplicadas aquí:
+   - Fondo Vanta en toda la pieza. Sin degradados decorativos.
+   - Un solo acento por pieza: Señal. Brasa queda declarado y sin uso.
+   - Una sola superficie de acento: `.btn--primary` (relleno Señal sobre Vanta).
+     El resto del uso de Señal es línea o texto, nunca superficie.
+   - Display en mayúsculas espaciadas; lectura en sans; cifras y códigos en mono.
+   ============================================================================ */
+
+:root {
+  /* Tokens de marca */
+  --vanta:     #08090B;
+  --grafito:   #15181D;
+  --acero:     #3B424C;
+  --cromo:     #C3C9D2;
+  --especular: #F2F5F9;
+  --senal:     #4DE3E8;
+  --brasa:     #E39A4A; /* reservado: no se usa junto a Señal en esta pieza */
+
+  /* Roles */
+  --bg:         var(--vanta);
+  --surface:    var(--grafito);
+  --line:       var(--acero);          /* divisiones y contenedores: decorativo */
+
+  /* Borde de control interactivo. Acero sobre Vanta da 1,96:1 y no cumple el
+     mínimo 3:1 de WCAG 1.4.11 para límites de componentes de interfaz, así que
+     los campos usan un tono derivado de Cromo (4,17:1 sobre Vanta, 3,73:1 sobre
+     Grafito). No es un color nuevo: es Cromo mezclado con Vanta. */
+  --line-strong: #6F7378;
+  --line-strong: color-mix(in srgb, var(--cromo) 55%, var(--vanta));
+
+  /* Filete interior y tramas de plano: Acero rebajado con Grafito. Tampoco es un
+     color nuevo. Solo se usa en líneas decorativas de bajo contraste; nunca
+     delimita componentes interactivos (esos siguen en --line-strong). */
+  --line-soft: #2A2F37;
+  --line-soft: color-mix(in srgb, var(--acero) 55%, var(--grafito));
+  --text:       var(--cromo);
+  --text-strong:var(--especular);
+  --accent:     var(--senal);
+
+  /* Tipografía. Las familias de marca no se auto-alojan todavía (ver README). */
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  --shell:     72rem;
+  --gap:       clamp(2rem, 5vw, 4.5rem);
+  --radius:    2px;
+  --header-h:  4.75rem;
+}
+
+/* ---------------------------------------------------------------- base ---- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* `hidden` debe ganarle a las clases de layout: los grupos plegables del formulario
+   llevan `display: grid` por clase y, sin esta regla, el atributo no los ocultaría. */
+[hidden] { display: none !important; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 { color: var(--text-strong); line-height: 1.2; margin: 0 0 0.75rem; text-wrap: balance; }
+h1 { font-size: clamp(2.1rem, 1.3rem + 3.6vw, 3.6rem); }
+h2 { font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.35rem); }
+h3 { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem); }
+
+p { margin: 0 0 1rem; max-width: 62ch; }
+ul, ol, dl { margin: 0 0 1rem; }
+
+a { color: var(--text-strong); text-decoration-color: var(--acero); text-underline-offset: 0.25em; }
+a:hover { text-decoration-color: var(--accent); }
+
+.display {
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  font-weight: 600;
+}
+
+.mono { font-family: var(--font-mono); font-size: 0.875em; letter-spacing: 0.02em; }
+
+.mono-block {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  border-left: 1px solid var(--line);
+  padding-left: 1rem;
+  color: var(--text);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.tag--flag {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.25rem 0.55rem;
+  color: var(--text-strong);
+}
+
+.pending {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--text-strong);
+  border-bottom: 1px dashed var(--line);
+}
+
+.lede { font-size: 1.0625em; color: var(--text-strong); }
+
+.microcopy { font-size: 0.9rem; color: var(--text); max-width: 56ch; }
+
+.note {
+  font-size: 0.9375rem;
+  border-left: 1px solid var(--accent);
+  padding-left: 1rem;
+  margin-top: 1.25rem;
+  color: var(--text-strong);
+}
+
+.banner {
+  font-size: 0.9375rem;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  color: var(--text-strong);
+  max-width: 56ch;
+}
+
+blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--line);
+  color: var(--text-strong);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* -------------------------------------------------------------- foco a11y --- */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+/* Fijo, no absoluto: al recibir el foco queda dentro de la ventana aunque la
+   página esté desplazada. */
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--accent);
+  color: var(--vanta);
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 120ms ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ------------------------------------------------------------- estructura --- */
+
+.shell {
+  width: min(100% - 2.5rem, var(--shell));
+  margin-inline: auto;
+}
+
+.section { padding-block: clamp(3.5rem, 7vw, 6.5rem); border-top: 1px solid var(--line); }
+.section--hero { border-top: 0; padding-top: clamp(2.5rem, 5vw, 4.5rem); }
+.section__head { margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 46rem; }
+
+/* Composición asimétrica Decide / Learn.
+   `decide` sostiene la acción; `learn` sostiene el contexto que ayuda a evaluar.
+   Los anchos nunca son iguales y la columna secundaria arranca desfasada. */
+.split { display: grid; gap: var(--gap); }
+
+@media (min-width: 62rem) {
+  .split { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; }
+
+  .split--hero .split__learn {
+    margin-top: 5.5rem;
+    border-left: 1px solid var(--line);
+    padding-left: clamp(1.5rem, 2.5vw, 2.5rem);
+  }
+  /* La columna de contexto no compite con el titular de la pieza. */
+  .split--hero .split__learn h2 { font-size: clamp(1.35rem, 1.05rem + 0.9vw, 1.8rem); }
+
+  /* Variantes donde la columna de contexto encabeza y es la más angosta. */
+  .split--scenario,
+  .split--method,
+  .split--evidence,
+  .split--services,
+  .split--faq,
+  .split--privacy,
+  .split--contact { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+
+  .split--b2b { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+  .split--b2b .split__learn { margin-top: 3.5rem; }
+
+  .split__learn--lead { position: sticky; top: calc(var(--header-h) + 2rem); }
+  .split--scenario .split__decide { margin-top: 0.5rem; }
+  .split--evidence .split__learn--lead,
+  .split--services .split__learn { position: static; margin-top: 3rem; }
+}
+
+.split--scenario { padding-block: clamp(2rem, 4vw, 3rem); }
+.split--scenario + .split--scenario { border-top: 1px solid var(--line); }
+
+/* ----------------------------------------------------------------- header --- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  min-height: var(--header-h);
+  padding-block: 0.75rem;
+}
+
+.brand { text-decoration: none; display: block; }
+.brand__name {
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.95rem;
+  color: var(--text-strong);
+}
+.brand__tag {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  margin: 0.15rem 0 0;
+}
+
+.site-header__actions { display: flex; align-items: center; gap: 0.75rem; }
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--text-strong);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.8rem;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.nav-toggle:hover { border-color: var(--cromo); }
+.nav-toggle__bars { display: grid; gap: 3px; }
+.nav-toggle__bars span { display: block; width: 16px; height: 1px; background: currentColor; }
+
+.nav { grid-column: 1 / -1; display: none; }
+.nav.is-open { display: block; padding-block: 0.5rem 1rem; border-top: 1px solid var(--line); }
+
+.nav__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.25rem; }
+.nav__list a {
+  display: block;
+  padding: 0.6rem 0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-bottom: 1px solid transparent;
+}
+.nav__list a:hover { border-bottom-color: var(--accent); }
+
+/* En pantallas angostas la barra conserva marca, CTA persistente y menú en una
+   sola fila: la etiqueta descriptiva se lee en el pie y el botón de menú queda
+   como icono con nombre accesible. */
+@media (max-width: 61.99rem) {
+  .brand__tag { display: none; }
+  .brand__name { font-size: 0.82rem; letter-spacing: 0.1em; }
+  .site-header__actions { gap: 0.5rem; }
+  /* 2,75rem = 44px: objetivo táctil mínimo para CTA, menú y enlaces del panel. */
+  .site-header__actions .btn--compact {
+    font-size: 0.78rem;
+    padding: 0.6rem 0.75rem;
+    min-height: 2.75rem;
+  }
+  .nav-toggle {
+    padding: 0.6rem 0.7rem;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+    justify-content: center;
+  }
+  .nav__list a { display: flex; align-items: center; min-height: 2.75rem; padding: 0.35rem 0; }
+  .nav-toggle__label {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* 24,375rem = 390px. Cubre 320, 360 y 390 px.
+   La barra pasa a tres columnas reales —marca | CTA | menú— porque
+   `.site-header__actions` se disuelve con `display: contents`. Solo la marca cede
+   ancho: puede quebrar en dos líneas, mientras la CTA conserva su etiqueta completa
+   y ambos controles mantienen 44 px de alto. El canal lateral del encabezado baja a
+   1,5 rem para recuperar ancho útil sin tocar la composición del resto de la página. */
+@media (max-width: 24.375rem) {
+  .site-header .shell { width: min(100% - 1.5rem, var(--shell)); }
+
+  .site-header__inner {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 0.5rem;
+  }
+
+  .site-header__actions { display: contents; }
+
+  .brand { min-width: 0; }
+  .brand__name {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    line-height: 1.15;
+    overflow-wrap: break-word;
+  }
+
+  .site-header__actions .btn--compact {
+    font-size: 0.75rem;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .nav { grid-column: 1 / -1; }
+}
+
+@media (min-width: 62rem) {
+  .site-header__inner { grid-template-columns: auto 1fr auto; }
+  .nav { display: block; grid-column: auto; justify-self: end; }
+  .nav.is-open { border-top: 0; padding-block: 0; }
+  .nav__list { display: flex; gap: 1.5rem; }
+  .nav__list a { padding: 0.25rem 0; }
+  .nav-toggle { display: none; }
+}
+
+/* ----------------------------------------------------------------- botones --- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+/* Única superficie de acento de la pieza. */
+.btn--primary { background: var(--accent); color: var(--vanta); }
+.btn--primary:hover { background: var(--especular); }
+
+.btn--ghost { background: transparent; color: var(--text-strong); border-color: var(--line-strong); }
+.btn--ghost:hover { border-color: var(--cromo); }
+
+.btn--compact { padding: 0.6rem 1rem; font-size: 0.85rem; white-space: nowrap; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 1rem; }
+.actions--form { margin-bottom: 0; }
+
+.link-cta {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-strong);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+}
+.link-cta:hover { color: var(--accent); }
+
+/* ---------------------------------------------------------------- tarjetas --- */
+
+.cards {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 1.25rem;
+}
+@media (min-width: 48rem) { .cards { grid-template-columns: repeat(3, 1fr); } }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+}
+.card p:last-of-type { margin-bottom: 1rem; }
+.card .link-cta { margin-top: auto; align-self: start; }
+
+/* --------------------------------------------------------------- listas UI --- */
+
+.list-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-strong);
+  margin-bottom: 1rem;
+}
+
+.ticks { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 0.85rem; }
+.ticks li {
+  position: relative;
+  padding-left: 1.5rem;
+  max-width: 62ch;
+}
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 0.7rem; height: 1px;
+  background: var(--accent);
+}
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: none; }
+.step {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 1rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.step:first-child { border-top: 0; padding-top: 0; }
+.step__num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  padding-top: 0.25rem;
+}
+.step__body p:last-child { margin-bottom: 0; }
+
+.assets { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.asset {
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.35rem;
+}
+.asset:first-child { border-top: 0; padding-top: 0; }
+.asset p { margin: 0; }
+.mono-key {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-strong);
+}
+
+.case {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+.case__list { margin: 1rem 0 0; }
+.case__list dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-top: 0.9rem;
+}
+.case__list dd { margin: 0.2rem 0 0; color: var(--text-strong); }
+
+.services { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.service {
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--line);
+}
+.service:first-child { border-top: 0; padding-top: 0; }
+
+.limits { }
+.limits__list { margin: 0; }
+.limits__list dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 1.35rem;
+}
+.limits__list dt:first-child { margin-top: 0; }
+.limits__list dd { margin: 0.35rem 0 0; max-width: 62ch; }
+
+/* --------------------------------------------------------------------- FAQ --- */
+
+.faq { display: grid; }
+.faq__item { border-top: 1px solid var(--line); }
+.faq__item:last-child { border-bottom: 1px solid var(--line); }
+.faq__item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.1rem 2.5rem 1.1rem 0;
+  position: relative;
+  color: var(--text-strong);
+  font-weight: 600;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0.35rem; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
+.faq__item[open] summary::after { content: "−"; }
+.faq__item p { margin: 0 0 1.25rem; }
+
+/* ------------------------------------------------------------- formulario --- */
+
+.form-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.progress { margin-bottom: 1.5rem; }
+.progress__label { display: block; margin: 0 0 0.6rem; color: var(--text-strong); }
+.progress__track { height: 2px; background: var(--acero); border-radius: 2px; overflow: hidden; }
+.progress__fill { display: block; height: 100%; width: 50%; background: var(--especular); transition: width 160ms ease; }
+
+.form-status { margin: 0 0 1rem; font-size: 0.9rem; color: var(--text-strong); }
+.form-status:empty { display: none; }
+
+.step-panel { border: 0; margin: 0; padding: 0; min-inline-size: 0; }
+
+.field { border: 0; margin: 0 0 1.5rem; padding: 0; min-inline-size: 0; }
+
+.label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-strong);
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  padding: 0;
+}
+
+.help { font-size: 0.85rem; color: var(--text); margin: 0 0 0.5rem; max-width: 56ch; }
+
+input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  width: 100%;
+  background: var(--vanta);
+  color: var(--text-strong);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+  font-size: 0.95rem;
+}
+textarea { resize: vertical; min-height: 6rem; }
+/* Cheurón dibujado con un SVG plano: sin degradados, ni siquiera funcionales. */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C3C9D2' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-position: right 0.85rem center;
+  background-size: 12px 8px;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
+}
+input:hover, select:hover, textarea:hover { border-color: var(--cromo); }
+
+/* El indicador de error es borde + texto, no solo color. */
+[aria-invalid="true"] { border-color: var(--especular); border-left-width: 3px; }
+
+.choices { display: grid; gap: 0.5rem; }
+.choices--grid { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+
+.choice {
+  display: grid;
+  grid-template-columns: 1.15rem 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.925rem;
+}
+.choice:hover { border-color: var(--cromo); }
+.choice input { margin: 0.25rem 0 0; accent-color: var(--senal); width: 1.05rem; height: 1.05rem; }
+.choice--block { grid-template-columns: 1.15rem 1fr; margin-bottom: 0.6rem; }
+.choice:has(input:checked) { border-color: var(--accent); }
+
+.error {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  color: var(--especular);
+  font-weight: 600;
+}
+.error:empty { display: none; }
+.error:not(:empty)::before { content: "· "; color: var(--accent); }
+
+/* Resumen de ruta. Repite el contexto que traía el enlace de origen y deja corregirlo
+   sin perder lo escrito. Usa el mismo filete de acento que `.banner`: no es una
+   segunda superficie de acento. */
+.route-summary {
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.route-summary .mono-key { margin: 0 0 0.35rem; }
+.route-summary__value {
+  margin: 0 0 0.35rem;
+  color: var(--text-strong);
+  font-weight: 600;
+}
+.route-summary .help { margin-bottom: 0.75rem; }
+
+/* Control de plegado para prioridades secundarias y detalles opcionales. Se dibuja
+   como texto con filete, igual que la FAQ, para no competir con la CTA primaria. */
+.disclosure {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  color: var(--text-strong);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.disclosure::before {
+  content: "+";
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
+.disclosure[aria-expanded="true"]::before { content: "−"; }
+.disclosure:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+#field-prioridades .disclosure { margin: 0.85rem 0 0; }
+#prioridades-extra { margin-top: 0.85rem; }
+
+.optional-block { margin-bottom: 1.5rem; }
+.optional-block .disclosure { margin: 0 0 1.25rem; }
+.optional-fields .field:last-child { margin-bottom: 0; }
+
+.confirmation { }
+.confirmation h3 { margin-top: 0.75rem; }
+
+/* ----------------------------------------------------------------- footer --- */
+
+.site-footer { border-top: 1px solid var(--line); padding-block: clamp(2.5rem, 5vw, 4rem); }
+.site-footer__inner { display: grid; gap: 2.5rem; }
+@media (min-width: 62rem) {
+  .site-footer__inner { grid-template-columns: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 5fr); }
+}
+.site-footer__nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; font-size: 0.925rem; }
+.site-footer__nav a { text-decoration: none; }
+.site-footer__nav a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+.legal-list { margin: 0 0 1rem; font-size: 0.9rem; }
+.legal-list dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-top: 0.75rem;
+}
+.legal-list dt:first-child { margin-top: 0; }
+.legal-list dd { margin: 0.15rem 0 0; }
+
+/* ------------------------------------- figuras de método y zonas de imagen --- */
+
+/* Marco interior de lámina técnica: un filete desfasado dentro del borde exterior
+   de los paneles Grafito. Es línea, no sombra ni superficie nueva. */
+.card, .case, .form-panel, .diagram { position: relative; }
+.card::after, .case::after, .form-panel::after, .diagram::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  pointer-events: none;
+}
+
+.figures { display: grid; gap: 1.5rem; margin-top: clamp(2rem, 4vw, 3rem); }
+@media (min-width: 62rem) {
+  .figures { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+  /* Desfase editorial: la segunda figura arranca más abajo, como el resto de la
+     composición asimétrica. */
+  .figures .diagram:last-child { margin-top: 2.5rem; }
+}
+
+.diagram {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+/* El diagrama escala con su columna pero no crece sin límite: los rótulos del
+   SVG mantienen un tamaño de lectura estable. */
+.diagram__svg {
+  display: block;
+  width: 100%;
+  max-width: 28rem;
+  height: auto;
+  margin-inline: auto;
+}
+
+.diagram__svg text {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  fill: var(--text);
+}
+.diagram__svg .dg-label--key { fill: var(--text-strong); }
+.diagram__svg .dg-label--accent { fill: var(--accent); }
+.diagram__svg .dg-node { fill: var(--bg); stroke: var(--line); stroke-width: 1; }
+.diagram__svg .dg-node--key { stroke: var(--text-strong); }
+.diagram__svg .dg-node--accent { stroke: var(--accent); stroke-width: 1.5; }
+.diagram__svg .dg-wire { fill: none; stroke: var(--line); stroke-width: 1; }
+.diagram__svg .dg-wire--accent { stroke: var(--accent); stroke-width: 1.5; }
+.diagram__svg .dg-wire--ext { stroke-dasharray: 4 4; }
+.diagram__svg .dg-bound { fill: none; stroke: var(--accent); stroke-width: 1; }
+
+.diagram__caption { margin: 1rem 0 0; font-size: 0.85rem; color: var(--text); max-width: 56ch; }
+.diagram__caption .mono-key { display: block; margin: 0 0 0.35rem; }
+
+/* Zona de imagen propia futura: trama de plano en trazos planos sobre Vanta.
+   No es una imagen ni un degradado; queda vacía hasta producir material propio. */
+.photo-slot {
+  position: relative;
+  overflow: hidden;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 3vw, 2rem);
+  min-height: clamp(11rem, 26vw, 16rem);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+/* Dentro de una composición dividida, la zona ocupa el ancho completo. */
+.split .photo-slot { grid-column: 1 / -1; }
+
+.photo-slot__grid { position: absolute; inset: 0; width: 100%; height: 100%; }
+.photo-slot__grid path { fill: none; stroke-width: 1; }
+.photo-slot__grid .plot-minor { stroke: var(--grafito); }
+.photo-slot__grid .plot-major { stroke: var(--line-soft); }
+
+.photo-slot__body { position: relative; display: grid; gap: 0.5rem; justify-items: center; }
+.photo-slot__body p { margin: 0; }
+.photo-slot__type {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-strong);
+}
+.photo-slot__note { font-size: 0.85rem; color: var(--text); max-width: 48ch; }
+
+/* ------------------------------------------------------- movimiento reducido --- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .split__learn--lead { position: static; }
+}
+
+/* ------------------------------------------------------------- impresión --- */
+
+@media print {
+  .site-header, .nav, .skip-link, .actions { display: none; }
+  body { background: #fff; color: #000; }
+}

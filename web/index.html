@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Cromo Systems — Automatización, energía y seguridad residencial</title>
+<meta name="description" content="Diseñamos, integramos y documentamos automatización, energía y seguridad para casas, parcelas y proyectos. Solicita un diagnóstico técnico.">
+
+<!-- MVP previo a lanzamiento: el sitio contiene campos [PENDIENTE DE CONFIRMACIÓN] y el
+     formulario no tiene backend. Se mantiene noindex hasta completar los pendientes
+     listados en README.md. Quitar esta línea es un paso explícito de lanzamiento. -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Canonical PROVISIONAL: el dominio definitivo no está confirmado. Reemplazar en README.md
+     paso 1 antes de publicar e indexar. -->
+<link rel="canonical" href="https://www.cromosystems.cl/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cromo Systems">
+<meta property="og:locale" content="es_CL">
+<meta property="og:title" content="Cromo Systems — Automatización, energía y seguridad residencial">
+<meta property="og:description" content="Diseñamos, integramos y documentamos automatización, energía y seguridad para casas, parcelas y proyectos. Solicita un diagnóstico técnico.">
+<meta property="og:url" content="https://www.cromosystems.cl/">
+<!-- og:image se omite deliberadamente: no existe todavía una imagen propia autorizada. -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cromo Systems — Automatización, energía y seguridad residencial">
+<meta name="twitter:description" content="Diseñamos, integramos y documentamos automatización, energía y seguridad para casas, parcelas y proyectos. Solicita un diagnóstico técnico.">
+
+<meta name="theme-color" content="#08090B">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+
+<!-- JSON-LD mínimo y verificable. No se declara LocalBusiness, dirección, teléfono, horario,
+     areaServed, logo, sameAs ni AggregateRating porque esos datos no están confirmados. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.cromosystems.cl/#organization",
+      "name": "Cromo Systems SpA",
+      "alternateName": "Cromo Systems",
+      "url": "https://www.cromosystems.cl/",
+      "description": "Diseño, integración y documentación de automatización, energía y seguridad residencial para casas, parcelas y proyectos."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.cromosystems.cl/#website",
+      "url": "https://www.cromosystems.cl/",
+      "name": "Cromo Systems",
+      "inLanguage": "es-CL",
+      "publisher": { "@id": "https://www.cromosystems.cl/#organization" }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header" id="inicio">
+  <div class="shell site-header__inner">
+    <a class="brand" href="#inicio">
+      <span class="brand__name">Cromo Systems</span>
+      <span class="brand__tag">Automatización, energía y seguridad residencial</span>
+    </a>
+
+    <!-- La CTA persistente vive fuera del panel colapsable: en móvil sigue visible en la
+         barra y el menú desplegable no la cubre. -->
+    <div class="site-header__actions">
+      <a class="btn btn--primary btn--compact" href="#contacto" data-cta="header">Solicitar diagnóstico</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-primary">
+        <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="nav-toggle__label">Menú</span>
+      </button>
+    </div>
+
+    <nav class="nav" id="nav-primary" aria-label="Navegación principal">
+      <ul class="nav__list" role="list">
+        <li><a href="#casa">Para tu casa</a></li>
+        <li><a href="#proyectos">Para proyectos</a></li>
+        <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+        <li><a href="#evidencia">Evidencia</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ================= HERO — composición asimétrica Decide / Learn ================= -->
+  <section class="section section--hero" aria-labelledby="hero-title">
+    <div class="shell split split--hero">
+
+      <div class="split__decide">
+        <p class="eyebrow">CS / INTEGRACIÓN RESIDENCIAL</p>
+        <h1 id="hero-title" class="display">Sistemas para que la casa funcione con orden</h1>
+        <p class="lede">Diseñamos, integramos y documentamos acceso, iluminación, clima, riego, energía y alertas para casas, parcelas y proyectos residenciales.</p>
+        <p>Cada proyecto parte por revisar el entorno, los equipos y las dependencias. La compatibilidad se valida por modelo y función antes de definir una propuesta.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="#contacto" data-cta="hero_primaria">Solicitar diagnóstico</a>
+          <a class="btn btn--ghost" href="#como-trabajamos" data-cta="hero_secundaria">Ver cómo trabajamos</a>
+        </div>
+        <p class="microcopy">La primera conversación sirve para revisar si el caso es técnicamente viable. No necesitas conocer marcas ni protocolos.</p>
+      </div>
+
+      <aside class="split__learn" aria-labelledby="promesa-title">
+        <p class="eyebrow">PROMESA DE MARCA</p>
+        <h2 id="promesa-title">Una instalación se entiende cuando llega el momento de usarla</h2>
+        <p>No se trata de sumar aplicaciones. Se trata de que las funciones acordadas tengan un lugar claro, una forma de operación manual y una documentación que permita mantenerlas.</p>
+        <p>Al cierre de un proyecto incluido en cotización, Cromo Systems entrega los elementos definidos para ese alcance: diagrama unilineal, mapa de red, inventario de dispositivos, respaldo de configuración y registro de pruebas.</p>
+        <blockquote>La propuesta indica qué función se evaluó, de qué equipos depende y qué ocurre si falla una conexión, una cuenta externa o la alimentación respaldada.</blockquote>
+        <a class="link-cta" href="#como-trabajamos" data-cta="promesa">Revisar el método</a>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ================= ELIGE TU CONTEXTO ================= -->
+  <section class="section" id="casa" aria-labelledby="contexto-title">
+    <div class="shell">
+      <div class="section__head">
+        <p class="eyebrow">CONTEXTO / TRES RUTAS</p>
+        <h2 id="contexto-title">Elige tu contexto</h2>
+      </div>
+
+      <ul class="cards" role="list">
+        <li class="card">
+          <p class="tag">CS-P / PARCELA</p>
+          <h3>Saber qué ocurre, incluso cuando no estás</h3>
+          <p>Portón, riego, bomba, iluminación exterior y alertas pueden revisarse desde una sola operación definida para el proyecto. Antes de integrarlos, revisamos conectividad, alimentación, control manual y dependencia de servicios externos.</p>
+          <a class="link-cta" href="index.html?contexto=parcela#contacto" data-cta="contexto_parcela" data-contexto="parcela">Cuéntanos tu parcela</a>
+        </li>
+        <li class="card">
+          <p class="tag">CS-R / RESIDENCIA</p>
+          <h3>Rutinas que se sienten naturales en la casa</h3>
+          <p>Escenas de llegada, salida, noche o descanso pueden reunir iluminación, clima y accesos según las rutinas que realmente usa la familia. La interfaz se diseña para el uso diario; los detalles de integración quedan documentados.</p>
+          <a class="link-cta" href="index.html?contexto=residencia#contacto" data-cta="contexto_residencia" data-contexto="residencia">Solicitar diagnóstico</a>
+        </li>
+        <li class="card">
+          <p class="tag">CS-C / PROYECTO</p>
+          <h3>La coordinación empieza antes de cerrar muros</h3>
+          <p>Para una obra nueva o remodelación, definimos criterios de canalización, red, ubicaciones, responsabilidades y pruebas junto al equipo de proyecto. Así, las decisiones de integración se revisan cuando todavía se pueden coordinar.</p>
+          <a class="link-cta" href="index.html?contexto=proyecto#contacto" data-cta="contexto_proyecto" data-contexto="proyecto">Hablar sobre un proyecto</a>
+        </li>
+      </ul>
+
+      <!-- Zona reservada para fotografía propia futura (Manual §8). Sin stock: queda
+           rotulada [PENDIENTE DE PRODUCCIÓN] hasta contar con material autorizado. -->
+      <div class="photo-slot">
+        <svg class="photo-slot__grid" aria-hidden="true" focusable="false" width="100%" height="100%">
+          <defs>
+            <pattern id="plot-grid-a" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path class="plot-minor" d="M24 0H0V24"/>
+            </pattern>
+            <pattern id="plot-grid-a-major" width="96" height="96" patternUnits="userSpaceOnUse">
+              <path class="plot-major" d="M96 0H0V96"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#plot-grid-a)"/>
+          <rect width="100%" height="100%" fill="url(#plot-grid-a-major)"/>
+        </svg>
+        <div class="photo-slot__body">
+          <p class="mono-key">ZONA DE IMAGEN PROPIA</p>
+          <p class="photo-slot__type">CASA HABITADA DE NOCHE</p>
+          <p class="pending">[PENDIENTE DE PRODUCCIÓN]</p>
+          <p class="photo-slot__note">Fotografía propia por producir: la casa iluminada de noche y el entorno oscuro, sin dispositivos a la vista. No se usará fotografía de stock ni imágenes genéricas; solo material propio autorizado, sin rostros reconocibles, direcciones ni datos operativos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ESCENARIOS DE RESULTADO ================= -->
+  <section class="section" id="escenarios" aria-labelledby="escenarios-title">
+    <div class="shell">
+      <div class="section__head">
+        <p class="eyebrow">RESULTADOS / TRES ESCENARIOS</p>
+        <h2 id="escenarios-title">Escenarios de resultado</h2>
+      </div>
+
+      <article class="split split--scenario">
+        <div class="split__learn split__learn--lead">
+          <p class="tag">ESCENARIO 01 / PARCELA</p>
+          <h3>Revisar condiciones en una propiedad dispersa</h3>
+          <p>Una parcela suele reunir accesos, riego, iluminación exterior, equipos de agua y una conexión que debe revisarse antes de depender de ella. El diagnóstico identifica qué se puede integrar, qué requiere un especialista y qué seguirá siendo manual.</p>
+        </div>
+        <div class="split__decide">
+          <p class="list-title">Lo que se puede evaluar por proyecto</p>
+          <ul class="ticks">
+            <li>Estado y control de acceso o portón, sujeto al equipo existente y a sus protecciones.</li>
+            <li>Alertas informativas de condiciones acordadas, como nivel, corte o apertura, cuando el sensor y la ruta de notificación sean aptos.</li>
+            <li>Riego y equipos de agua con automatizaciones acotadas, siempre con resguardo manual y sin sustituir protecciones hidráulicas o eléctricas.</li>
+            <li>Respaldo de funciones definidas, solo después de calcular cargas, autonomía, equipos incluidos y condiciones de prueba.</li>
+          </ul>
+          <p class="note">La propuesta especifica qué queda disponible si se interrumpe Internet o energía y qué depende de terceros.</p>
+          <a class="link-cta" href="index.html?contexto=parcela#contacto" data-cta="escenario_parcela" data-contexto="parcela">Evaluar mi parcela</a>
+        </div>
+      </article>
+
+      <article class="split split--scenario">
+        <div class="split__learn split__learn--lead">
+          <p class="tag">ESCENARIO 02 / RESIDENCIA</p>
+          <h3>Una casa con menos controles a la vista</h3>
+          <p>La integración puede reunir acciones cotidianas en escenas simples: llegada, salida, noche o una rutina definida con la familia. El diseño considera controles físicos, uso compartido y la recuperación manual de cada función relevante.</p>
+        </div>
+        <div class="split__decide">
+          <p class="list-title">Lo que se puede evaluar por proyecto</p>
+          <ul class="ticks">
+            <li>Escenas de iluminación y cortinas según ambientes, equipos compatibles y obra disponible.</li>
+            <li>Clima con reglas acordadas y límites definidos por el sistema de calefacción o climatización existente.</li>
+            <li>Accesos y alertas informativas configurados con cuentas individuales cuando las plataformas lo permitan.</li>
+            <li>Medición de consumos y detección de excepciones según instrumentos, línea base y período de observación.</li>
+          </ul>
+          <p class="note">No se publica un porcentaje de ahorro sin una línea base, un período comparable y condiciones registradas.</p>
+          <a class="link-cta" href="index.html?contexto=residencia#contacto" data-cta="escenario_residencia" data-contexto="residencia">Revisar una residencia</a>
+        </div>
+      </article>
+
+      <article class="split split--scenario">
+        <div class="split__learn split__learn--lead">
+          <p class="tag">ESCENARIO 03 / PROYECTO</p>
+          <h3>Las especialidades se coordinan con información concreta</h3>
+          <p>La integración residencial se resuelve mejor con decisiones tempranas: rutas de canalización, ubicaciones, alimentación, red, gabinete, controles y responsables. Cromo Systems trabaja sobre esos criterios con arquitectos, constructoras y especialistas definidos por cada proyecto.</p>
+        </div>
+        <div class="split__decide">
+          <p class="list-title">Entregables posibles, según alcance contratado</p>
+          <ul class="ticks">
+            <li>Criterios de integración y matriz de responsabilidades por especialidad.</li>
+            <li>Requerimientos de canalización, alimentación, red y ubicación de equipos.</li>
+            <li>Inventario por modelo y función requerida; la compatibilidad no se asume por marca.</li>
+            <li>Pruebas de aceptación, dependencias y procedimiento de entrega.</li>
+            <li>Documentación final para operación, mantención y cambios posteriores.</li>
+          </ul>
+          <p class="note">Los trabajos eléctricos regulados y sus declaraciones se coordinan con personal habilitado cuando corresponde.</p>
+          <a class="link-cta" href="index.html?contexto=proyecto#contacto" data-cta="escenario_proyecto" data-contexto="proyecto">Coordinar un proyecto</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= MÉTODO ================= -->
+  <section class="section" id="como-trabajamos" aria-labelledby="metodo-title">
+    <div class="shell split split--method">
+      <div class="split__learn split__learn--lead">
+        <p class="eyebrow">MÉTODO / 05 ETAPAS</p>
+        <h2 id="metodo-title">Antes de instalar, entendemos qué debe pasar</h2>
+        <p>Cada etapa deja información que permite tomar la siguiente decisión con menos supuestos.</p>
+        <a class="btn btn--ghost" href="#contacto" data-cta="metodo">Ver si mi caso aplica</a>
+      </div>
+
+      <ol class="steps split__decide" role="list">
+        <li class="step">
+          <span class="step__num" aria-hidden="true">01</span>
+          <div class="step__body">
+            <h3>Precalificación</h3>
+            <p>Revisamos tipo de propiedad, etapa, problema, zona y equipos existentes. Si el caso requiere otro especialista, lo indicamos antes de comprometer un alcance.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">02</span>
+          <div class="step__body">
+            <h3>Levantamiento</h3>
+            <p>Identificamos red, alimentación, accesos, equipos, restricciones y criterios de éxito. La compatibilidad se revisa por modelo exacto, firmware, función y dependencia.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">03</span>
+          <div class="step__body">
+            <h3>Diseño</h3>
+            <p>Ordenamos prioridades, alternativas, supuestos, exclusiones y responsables. Diseño, mano de obra, hardware, obra adicional, traslados y soporte se distinguen en la propuesta.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">04</span>
+          <div class="step__body">
+            <h3>Pruebas</h3>
+            <p>Probamos las funciones acordadas y escenarios no destructivos, como reinicio, pérdida temporal de red o alimentación, cuando sean pertinentes al alcance.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">05</span>
+          <div class="step__body">
+            <h3>Entrega y revisión</h3>
+            <p>Entregamos la documentación incluida, una guía de uso y los accesos acordados. La revisión posterior se define en la cotización o plan de soporte.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= EVIDENCIA ================= -->
+  <section class="section" id="evidencia" aria-labelledby="evidencia-title">
+    <div class="shell">
+      <div class="section__head">
+        <p class="eyebrow">EVIDENCIA / NO CATÁLOGO</p>
+        <h2 id="evidencia-title">El trabajo queda registrado</h2>
+        <p class="lede">La evidencia de Cromo Systems no son cajas ni logos. Son documentos y pruebas que hacen posible entender una instalación después de la entrega.</p>
+      </div>
+
+      <div class="split split--evidence">
+        <ul class="assets split__decide" role="list">
+          <li class="asset">
+            <p class="mono-key">UNILINEAL</p>
+            <p>Esquema de alimentación y componentes incluidos dentro del alcance del proyecto.</p>
+          </li>
+          <li class="asset">
+            <p class="mono-key">MAPA DE RED</p>
+            <p>Ubicación y relación de puntos de red, puentes de conexión y equipos relevantes.</p>
+          </li>
+          <li class="asset">
+            <p class="mono-key">INVENTARIO</p>
+            <p>Marca, modelo, función, versión y dependencia de los equipos instalados.</p>
+          </li>
+          <li class="asset">
+            <p class="mono-key">RESPALDO</p>
+            <p>Registro de configuración y procedimiento de recuperación definido para el alcance. Un respaldo no equivale a una restauración probada, salvo que el alcance incluya esa prueba.</p>
+          </li>
+          <li class="asset">
+            <p class="mono-key">PRUEBAS</p>
+            <p>Lista de funciones revisadas, dependencia identificada y comportamiento conocido.</p>
+          </li>
+        </ul>
+
+        <aside class="split__learn case" aria-labelledby="caso-title">
+          <p class="tag tag--flag">EJEMPLO DE MÉTODO</p>
+          <h3 id="caso-title">Estructura de caso / <span class="pending">[PENDIENTE DE MEDICIÓN]</span></h3>
+          <p>Así se publicará un caso cuando exista autorización escrita y medición. Los campos siguen vacíos a propósito.</p>
+          <dl class="case__list">
+            <dt>Problema inicial</dt>
+            <dd class="pending">[PENDIENTE DE MEDICIÓN]</dd>
+            <dt>Alcance acordado</dt>
+            <dd class="pending">[PENDIENTE DE MEDICIÓN]</dd>
+            <dt>Pruebas realizadas</dt>
+            <dd class="pending">[PENDIENTE DE MEDICIÓN]</dd>
+            <dt>Resultado bajo condiciones documentadas</dt>
+            <dd class="pending">[PENDIENTE DE MEDICIÓN]</dd>
+          </dl>
+          <p class="note">Este bloque describe la estructura de publicación de un caso. No corresponde a un cliente ni a una medición realizada.</p>
+          <a class="link-cta" href="#como-trabajamos" data-cta="evidencia">Revisar cómo documentamos</a>
+        </aside>
+      </div>
+
+      <!-- Figuras de método: SVG inline, abstractas y sin datos de proyecto. La regla
+           de honestidad exige el pie con FIGURA NN y la frase de no correspondencia. -->
+      <div class="figures">
+        <figure class="diagram">
+          <svg class="diagram__svg" viewBox="0 0 320 296" role="img" aria-labelledby="fig-01-title fig-01-desc">
+            <title id="fig-01-title">Unilineal abstracto de alimentación y respaldo por alcance</title>
+            <desc id="fig-01-desc">La red alimenta un tablero con protecciones. Desde el tablero, una parte de los circuitos queda sin respaldo y otra, definida por el alcance del proyecto, pasa por un respaldo antes de llegar a los circuitos respaldados. Sin marcas, modelos ni cifras.</desc>
+            <path class="dg-wire" d="M160 40 V64"/>
+            <path class="dg-wire" d="M88 96 V128"/>
+            <path class="dg-wire dg-wire--accent" d="M240 96 V128"/>
+            <path class="dg-wire dg-wire--accent" d="M240 176 V208"/>
+            <rect class="dg-node" x="16" y="8" width="288" height="32" rx="2"/>
+            <rect class="dg-node dg-node--key" x="16" y="64" width="288" height="32" rx="2"/>
+            <rect class="dg-node" x="16" y="128" width="144" height="48" rx="2"/>
+            <rect class="dg-node dg-node--accent" x="176" y="128" width="128" height="48" rx="2"/>
+            <rect class="dg-node" x="176" y="208" width="128" height="48" rx="2"/>
+            <text x="160" y="28" font-size="13" text-anchor="middle">ALIMENTACIÓN DE RED</text>
+            <text class="dg-label--key" x="160" y="84" font-size="13" text-anchor="middle">TABLERO · PROTECCIONES</text>
+            <text x="88" y="148" font-size="13" text-anchor="middle">CIRCUITOS</text>
+            <text x="88" y="166" font-size="13" text-anchor="middle">SIN RESPALDO</text>
+            <text class="dg-label--key" x="240" y="148" font-size="13" text-anchor="middle">RESPALDO</text>
+            <text x="240" y="166" font-size="11" text-anchor="middle">SEGÚN ALCANCE</text>
+            <text x="240" y="228" font-size="13" text-anchor="middle">CIRCUITOS</text>
+            <text x="240" y="246" font-size="13" text-anchor="middle">RESPALDADOS</text>
+            <text x="160" y="284" font-size="11" text-anchor="middle">SIN MARCAS · SIN MODELOS · SIN CIFRAS</text>
+          </svg>
+          <figcaption class="diagram__caption">
+            <span class="mono-key">FIGURA 01 · UNILINEAL DE ALCANCE</span>
+            Esquema abstracto de método; no corresponde a un proyecto. Sin marcas, modelos ni cifras de carga o autonomía.
+          </figcaption>
+        </figure>
+
+        <figure class="diagram">
+          <svg class="diagram__svg" viewBox="0 0 320 288" role="img" aria-labelledby="fig-02-title fig-02-desc">
+            <title id="fig-02-title">Mapa de red abstracto: control local y dependencia externa</title>
+            <desc id="fig-02-desc">Dentro del límite de operación local, un control local se conecta con acceso, riego, iluminación y sensores mediante líneas continuas. Internet y un servicio externo quedan fuera del límite, unidos por líneas discontinuas que señalan dependencia externa. Sin direcciones ni topología real.</desc>
+            <text class="dg-label--accent" x="8" y="32" font-size="11">OPERACIÓN LOCAL</text>
+            <rect class="dg-bound" x="8" y="40" width="200" height="200" rx="2"/>
+            <path class="dg-wire" d="M108 140 L62 70"/>
+            <path class="dg-wire" d="M108 140 L154 70"/>
+            <path class="dg-wire" d="M108 140 L62 210"/>
+            <path class="dg-wire" d="M108 140 L154 210"/>
+            <path class="dg-wire dg-wire--ext" d="M148 140 H220 V116 H232"/>
+            <path class="dg-wire dg-wire--ext" d="M220 140 V196 H232"/>
+            <rect class="dg-node" x="24" y="56" width="76" height="28" rx="2"/>
+            <rect class="dg-node" x="116" y="56" width="76" height="28" rx="2"/>
+            <rect class="dg-node dg-node--key" x="68" y="116" width="80" height="48" rx="2"/>
+            <rect class="dg-node" x="20" y="196" width="84" height="28" rx="2"/>
+            <rect class="dg-node" x="116" y="196" width="76" height="28" rx="2"/>
+            <rect class="dg-node" x="232" y="96" width="80" height="40" rx="2"/>
+            <rect class="dg-node" x="232" y="176" width="80" height="40" rx="2"/>
+            <text x="62" y="74" font-size="11" text-anchor="middle">ACCESO</text>
+            <text x="154" y="74" font-size="11" text-anchor="middle">RIEGO</text>
+            <text class="dg-label--key" x="108" y="136" font-size="12" text-anchor="middle">CONTROL</text>
+            <text class="dg-label--key" x="108" y="152" font-size="12" text-anchor="middle">LOCAL</text>
+            <text x="62" y="214" font-size="11" text-anchor="middle">ILUMINACIÓN</text>
+            <text x="154" y="214" font-size="11" text-anchor="middle">SENSORES</text>
+            <text x="272" y="112" font-size="11" text-anchor="middle">INTERNET</text>
+            <text x="272" y="128" font-size="11" text-anchor="middle">ISP</text>
+            <text x="272" y="192" font-size="11" text-anchor="middle">SERVICIO</text>
+            <text x="272" y="208" font-size="11" text-anchor="middle">EXTERNO</text>
+            <text x="272" y="236" font-size="10" text-anchor="middle">DEPENDENCIA</text>
+            <text x="272" y="250" font-size="10" text-anchor="middle">EXTERNA</text>
+            <text x="160" y="276" font-size="11" text-anchor="middle">SIN DIRECCIONES NI TOPOLOGÍA DE CLIENTE</text>
+          </svg>
+          <figcaption class="diagram__caption">
+            <span class="mono-key">FIGURA 02 · MAPA DE RED</span>
+            Esquema abstracto de método; no corresponde a un proyecto. Las líneas continuas indican control local; las discontinuas, dependencia de Internet o de un servicio externo.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICIOS Y LÍMITES ================= -->
+  <section class="section" id="servicios" aria-labelledby="servicios-title">
+    <div class="shell">
+      <div class="section__head">
+        <p class="eyebrow">SERVICIOS / ALCANCE DEFINIDO</p>
+        <h2 id="servicios-title">Un diagnóstico antes de una lista de equipos</h2>
+      </div>
+
+      <div class="split split--services">
+        <ul class="services split__decide" role="list">
+          <li class="service">
+            <h3>Diagnóstico y diseño</h3>
+            <p>Revisamos el problema, el entorno, los equipos existentes y las dependencias. El resultado define viabilidad, prioridades, alternativas, supuestos y los siguientes pasos. El alcance exacto se confirma antes de iniciar.</p>
+            <a class="link-cta" href="#contacto" data-cta="servicio_diagnostico">Solicitar diagnóstico</a>
+          </li>
+          <li class="service">
+            <h3>Auditoría e integración de sistemas existentes</h3>
+            <p>Ordenamos equipos y aplicaciones ya instalados. Revisamos compatibilidad por modelo, función requerida, firmware, red y dependencia de servicios externos. No se promete conservar una función hasta validarla.</p>
+            <a class="link-cta" href="#contacto" data-cta="servicio_auditoria">Revisar mi sistema actual</a>
+          </li>
+          <li class="service">
+            <h3>Integración e implementación por proyecto</h3>
+            <p>Diseñamos y configuramos las funciones definidas para el proyecto. Cuando se requieren trabajos eléctricos, de red, seguridad física, gas, cerrajería u otros oficios regulados, se coordinan con el profesional correspondiente.</p>
+            <a class="link-cta" href="#contacto" data-cta="servicio_integracion">Evaluar un proyecto</a>
+          </li>
+          <li class="service">
+            <h3>Soporte y mantenimiento</h3>
+            <p>Las revisiones, respaldos, actualizaciones y diagnósticos se ofrecen con canal, horario, número de intervenciones y exclusiones definidos por plan. No se promete monitoreo humano permanente, disponibilidad <span class="mono">24/7</span> ni resolución inmediata sin un contrato que lo establezca.</p>
+            <a class="link-cta" href="#contacto" data-cta="servicio_soporte">Consultar por soporte</a>
+          </li>
+        </ul>
+
+        <aside class="split__learn limits" aria-labelledby="limites-title">
+          <h3 id="limites-title">Límites que deben permanecer visibles</h3>
+          <dl class="limits__list">
+            <dt>Compatibilidad</dt>
+            <dd>La compatibilidad se valida por modelo exacto, firmware, función y entorno. Una marca por sí sola no confirma una integración.</dd>
+            <dt>Internet y cloud</dt>
+            <dd>Las funciones remotas pueden depender de Internet, ISP, cuentas, APIs o servicios externos. Esa dependencia se registra antes de definir el alcance.</dd>
+            <dt>Electricidad</dt>
+            <dd>La integración no sustituye trabajos eléctricos regulados ni certificaciones. Cuando corresponde, se coordina con personal habilitado.</dd>
+            <dt>Seguridad</dt>
+            <dd>Las alertas y controles integrados no reemplazan una central profesional, vigilancia humana, seguros ni respuesta de emergencia.</dd>
+            <dt>Privacidad</dt>
+            <dd>No envíes contraseñas, códigos, imágenes de cámaras ni datos de presencia mediante el formulario.</dd>
+            <dt>Energía</dt>
+            <dd>No se promete ahorro, autonomía ni continuidad sin definir medición, carga, respaldo, duración y condiciones de prueba.</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ARQUITECTOS Y CONSTRUCTORAS ================= -->
+  <section class="section" id="proyectos" aria-labelledby="proyectos-title">
+    <div class="shell split split--b2b">
+      <div class="split__decide">
+        <p class="eyebrow">CS-C / COORDINACIÓN DE PROYECTO</p>
+        <h2 id="proyectos-title">Integración residencial con información útil para obra</h2>
+        <p class="lede">Una decisión tardía puede transformar una canalización simple en retrabajo. Cromo Systems entra al proyecto para coordinar funciones, infraestructura y entregables antes de que las especialidades queden desconectadas.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="index.html?contexto=proyecto#contacto" data-cta="b2b_primaria" data-contexto="proyecto">Hablar sobre un proyecto</a>
+          <a class="btn btn--ghost" href="#como-trabajamos" data-cta="b2b_secundaria">Ver cómo trabajamos</a>
+        </div>
+        <p class="microcopy">No necesitas definir una marca antes de conversar. Primero revisamos funciones, infraestructura y responsables.</p>
+      </div>
+
+      <div class="split__learn">
+        <h3>Lo que coordinamos</h3>
+        <ul class="ticks">
+          <li>Criterios de uso por ambiente, acceso, iluminación, clima, seguridad y energía.</li>
+          <li>Necesidades de canalización, red, alimentación, gabinete y ubicación de controles.</li>
+          <li>Matriz de equipos por modelo, función, dependencia y responsable.</li>
+          <li>Hitos de revisión, pruebas de aceptación, entrega técnica y procedimiento de cambios.</li>
+          <li>Límites entre integración, electricidad, red, seguridad, proveedores cloud y postventa.</li>
+        </ul>
+        <h3>Lo que necesita la primera conversación</h3>
+        <p class="mono mono-block">Etapa de proyecto · especialidades involucradas · planos disponibles · fecha estimada de decisión · problema o estándar que se busca resolver</p>
+      </div>
+
+      <!-- Zona reservada para fotografía propia futura (Manual §8). Sin stock: queda
+           rotulada [PENDIENTE DE PRODUCCIÓN] hasta contar con material autorizado. -->
+      <div class="photo-slot">
+        <svg class="photo-slot__grid" aria-hidden="true" focusable="false" width="100%" height="100%">
+          <defs>
+            <pattern id="plot-grid-b" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path class="plot-minor" d="M24 0H0V24"/>
+            </pattern>
+            <pattern id="plot-grid-b-major" width="96" height="96" patternUnits="userSpaceOnUse">
+              <path class="plot-major" d="M96 0H0V96"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#plot-grid-b)"/>
+          <rect width="100%" height="100%" fill="url(#plot-grid-b-major)"/>
+        </svg>
+        <div class="photo-slot__body">
+          <p class="mono-key">ZONA DE IMAGEN PROPIA</p>
+          <p class="photo-slot__type">DETALLE DE INSTALACIÓN</p>
+          <p class="pending">[PENDIENTE DE PRODUCCIÓN]</p>
+          <p class="photo-slot__note">Fotografía propia por producir: tablero ordenado, cableado peinado y etiquetas legibles, fotografiado como producto. No se usará fotografía de stock ni imágenes genéricas; solo material propio autorizado, sin credenciales, códigos ni datos de cliente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PREGUNTAS FRECUENTES ================= -->
+  <section class="section" id="preguntas" aria-labelledby="faq-title">
+    <div class="shell split split--faq">
+      <div class="split__learn split__learn--lead">
+        <p class="eyebrow">PREGUNTAS / 08</p>
+        <h2 id="faq-title">Preguntas frecuentes</h2>
+      </div>
+
+      <div class="faq split__decide">
+        <details class="faq__item">
+          <summary>¿Pueden integrar equipos que ya tengo?</summary>
+          <p>Podemos evaluarlos. La compatibilidad se revisa por marca, modelo exacto, firmware, región, función requerida, ruta de integración y dependencia de cuentas o servicios externos. La propuesta indica el resultado de esa evaluación y sus límites.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Qué ocurre si se corta Internet?</summary>
+          <p>Depende de cada función, equipo y diseño. Durante el diagnóstico identificamos qué controles pueden operar localmente, qué depende de un servicio externo y cuál es la alternativa manual. No declaramos funcionamiento remoto sin revisar esas condiciones.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Qué ocurre si se corta la luz?</summary>
+          <p>La continuidad depende de la carga, el respaldo, los equipos incluidos y el tiempo de operación esperado. Si el proyecto considera respaldo, se especifican las condiciones de prueba y las funciones cubiertas; si no, se informa la limitación.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Cuánto cuesta un proyecto?</summary>
+          <p>El alcance cambia según propiedad, etapa de obra, red, modelos, responsables y trabajo adicional. Por eso comenzamos por una conversación y, cuando aplica, por un diagnóstico con alcance definido. Los precios no se publican como paquetes cerrados.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Trabajan con cualquier marca?</summary>
+          <p>No prometemos compatibilidad universal. Priorizamos funciones que se puedan validar por modelo y entorno. Las integraciones experimentales no se recomiendan para funciones críticas.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Realizan trabajos eléctricos?</summary>
+          <p>La integración se coordina con los trabajos eléctricos del proyecto. Las tareas reguladas, declaraciones y certificaciones corresponden a personal habilitado y al alcance que se haya contratado.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Ofrecen monitoreo o soporte permanente?</summary>
+          <p>El soporte se define por canal, horario, intervenciones, accesos y exclusiones. No ofrecemos vigilancia humana ni respuesta de emergencia como parte de la integración residencial estándar.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Qué información necesitan para comenzar?</summary>
+          <p>Tipo de propiedad, etapa, zona general, problema principal y equipos existentes si los conoces. No envíes contraseñas, códigos de acceso, dirección exacta ni imágenes sensibles.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRIVACIDAD ================= -->
+  <section class="section" id="privacidad" aria-labelledby="privacidad-title">
+    <div class="shell split split--privacy">
+      <div class="split__learn split__learn--lead">
+        <p class="eyebrow">PRIVACIDAD / TRATAMIENTO DE DATOS</p>
+        <h2 id="privacidad-title">Qué hacemos con lo que escribes</h2>
+        <p>Esta sección resume el tratamiento previsto. La Política de Privacidad completa se publicará antes de recibir solicitudes reales.</p>
+      </div>
+
+      <div class="split__decide">
+        <dl class="limits__list">
+          <dt>Estado actual de este sitio</dt>
+          <dd>El formulario no está conectado a un servicio de recepción. Los datos que escribas permanecen en tu navegador durante la sesión y no se transmiten a Cromo Systems ni a un tercero.</dd>
+          <dt>Finalidad</dt>
+          <dd>Cuando el backend esté conectado, la información se usará para responder tu solicitud, revisar viabilidad técnica y proponer el siguiente paso. No se usará para otra finalidad sin tu autorización.</dd>
+          <dt>Datos que no pedimos</dt>
+          <dd>No solicitamos contraseñas, tokens, códigos de acceso, dirección exacta, imágenes de cámaras ni datos de presencia. Si los escribes, el formulario te pedirá retirarlos antes de continuar.</dd>
+          <dt>Consentimiento</dt>
+          <dd>La autorización para responder tu solicitud es obligatoria y está separada del permiso opcional para comunicaciones futuras. Ninguna casilla viene marcada.</dd>
+          <dt>Medición</dt>
+          <dd>Este sitio no incluye analítica, cookies de terceros ni recursos externos. Cuando se instrumente, los eventos usarán nombres estables como <span class="mono">cta_click</span>, <span class="mono">form_start</span>, <span class="mono">form_step_complete</span> y <span class="mono">lead_submit</span>, sin nombre, correo, teléfono ni texto libre.</dd>
+          <dt>Retención y derechos</dt>
+          <dd class="pending">[PENDIENTE DE CONFIRMACIÓN]. Plazo de conservación, responsable, canal de solicitud de acceso, rectificación o eliminación se publicarán junto con la Política de Privacidad.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACTO ================= -->
+  <section class="section section--contact" id="contacto" aria-labelledby="contacto-title">
+    <div class="shell split split--contact">
+
+      <div class="split__learn split__learn--lead">
+        <p class="eyebrow">CONTACTO / PRECALIFICACIÓN</p>
+        <!-- El título cambia según el contexto elegido (parcela / residencia / proyecto).
+             `data-title-default` conserva la formulación de WEB-COPY.md §10 para el caso
+             sin contexto. -->
+        <h2 id="contacto-title" tabindex="-1" data-title-default="Cuéntanos qué debe funcionar mejor en tu casa">Cuéntanos qué debe funcionar mejor en tu casa</h2>
+        <p class="lede">Cuéntanos el contexto y el problema. Revisaremos si el proyecto requiere una conversación inicial, un diagnóstico o la coordinación de otro especialista.</p>
+        <p class="microcopy">Completar este formulario requiere algunos datos del proyecto y contacto. La información se usa para responder tu solicitud. No envíes credenciales, códigos de acceso, dirección exacta ni material sensible.</p>
+        <p class="banner" role="note">Versión sin backend. Este formulario valida los datos en tu navegador y no los envía a ningún servidor.</p>
+      </div>
+
+      <div class="split__decide">
+        <div class="form-panel">
+
+          <div class="progress" id="form-progress">
+            <p class="progress__label mono" id="progress-label">Paso 1 de 2 — Contexto del proyecto</p>
+            <div class="progress__track" role="progressbar" aria-labelledby="progress-label" aria-valuemin="1" aria-valuemax="2" aria-valuenow="1" id="progress-bar">
+              <span class="progress__fill" id="progress-fill"></span>
+            </div>
+          </div>
+
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+          <!-- Resumen de ruta. Queda oculto hasta que haya un contexto elegido, ya sea por
+               el enlace de origen (?contexto=…) o por el propio campo de motivo. Es editable:
+               el botón devuelve el foco al campo que lo define y nada de lo escrito se pierde. -->
+          <div class="route-summary" id="route-summary" hidden>
+            <p class="mono-key" id="route-summary-key">Ruta seleccionada</p>
+            <p class="route-summary__value" id="route-summary-value"></p>
+            <p class="help" id="route-summary-help">Puedes cambiar el contexto antes de continuar. Lo que ya escribiste se mantiene.</p>
+            <button class="btn btn--ghost btn--compact" type="button" id="route-summary-change" aria-describedby="route-summary-help">Cambiar contexto</button>
+          </div>
+
+          <form id="lead-form" novalidate>
+
+            <!-- ---------- PASO 1 ---------- -->
+            <fieldset class="step-panel" id="step-1">
+              <legend class="visually-hidden">Paso 1 de 2 — Contexto del proyecto</legend>
+
+              <fieldset class="field" id="field-motivo">
+                <legend class="label">¿Con qué tipo de proyecto necesitas ayuda?</legend>
+                <div class="choices">
+                  <label class="choice"><input type="radio" name="motivo" value="Parcela" aria-describedby="err-motivo"><span>Parcela</span></label>
+                  <label class="choice"><input type="radio" name="motivo" value="Residencia" aria-describedby="err-motivo"><span>Residencia</span></label>
+                  <label class="choice"><input type="radio" name="motivo" value="Arquitecto o constructora" aria-describedby="err-motivo"><span>Arquitecto o constructora</span></label>
+                  <label class="choice"><input type="radio" name="motivo" value="Otro" aria-describedby="err-motivo"><span>Otro</span></label>
+                </div>
+                <p class="error" id="err-motivo" role="alert"></p>
+              </fieldset>
+
+              <div class="field">
+                <label class="label" for="zona">¿En qué zona está el proyecto?</label>
+                <p class="help" id="help-zona">Comuna o zona general. No escribas la dirección exacta.</p>
+                <input type="text" id="zona" name="zona" maxlength="80" autocomplete="off" aria-describedby="help-zona err-zona">
+                <p class="error" id="err-zona" role="alert"></p>
+              </div>
+
+              <!-- Las cuatro opciones más frecuentes según el contexto quedan primero; el
+                   resto se agrupa en `#prioridades-extra`. Sin JavaScript se muestran las
+                   ocho, que es el estado por defecto del marcado. -->
+              <fieldset class="field" id="field-prioridades">
+                <legend class="label">¿Qué debe funcionar mejor?</legend>
+                <p class="help" id="help-prioridades">Elige entre 1 y 3 opciones.</p>
+                <div class="choices choices--grid" id="prioridades-main">
+                  <label class="choice" data-prioridad="Acceso o portón"><input type="checkbox" name="prioridades" value="Acceso o portón" aria-describedby="help-prioridades err-prioridades"><span>Acceso o portón</span></label>
+                  <label class="choice" data-prioridad="Iluminación"><input type="checkbox" name="prioridades" value="Iluminación" aria-describedby="help-prioridades err-prioridades"><span>Iluminación</span></label>
+                  <label class="choice" data-prioridad="Clima"><input type="checkbox" name="prioridades" value="Clima" aria-describedby="help-prioridades err-prioridades"><span>Clima</span></label>
+                  <label class="choice" data-prioridad="Alertas"><input type="checkbox" name="prioridades" value="Alertas" aria-describedby="help-prioridades err-prioridades"><span>Alertas</span></label>
+                </div>
+                <div class="choices choices--grid" id="prioridades-extra">
+                  <label class="choice" data-prioridad="Riego o agua"><input type="checkbox" name="prioridades" value="Riego o agua" aria-describedby="help-prioridades err-prioridades"><span>Riego o agua</span></label>
+                  <label class="choice" data-prioridad="Energía o medición"><input type="checkbox" name="prioridades" value="Energía o medición" aria-describedby="help-prioridades err-prioridades"><span>Energía o medición</span></label>
+                  <label class="choice" data-prioridad="Integrar lo existente"><input type="checkbox" name="prioridades" value="Integrar lo existente" aria-describedby="help-prioridades err-prioridades"><span>Integrar lo existente</span></label>
+                  <label class="choice" data-prioridad="Otro"><input type="checkbox" name="prioridades" value="Otro" aria-describedby="help-prioridades err-prioridades"><span>Otro</span></label>
+                </div>
+                <p class="error" id="err-prioridades" role="alert"></p>
+              </fieldset>
+
+              <div class="field">
+                <label class="label" for="descripcion">Describe el problema y el resultado que buscas</label>
+                <textarea id="descripcion" name="descripcion" rows="4" minlength="20" maxlength="600"
+                  placeholder="Ejemplo: quiero revisar el riego y el acceso de una segunda vivienda sin usar varias aplicaciones."
+                  aria-describedby="count-descripcion err-descripcion"></textarea>
+                <p class="help mono" id="count-descripcion" data-counter-for="descripcion" aria-live="polite">0 / 600</p>
+                <p class="error" id="err-descripcion" role="alert"></p>
+              </div>
+
+              <div class="field">
+                <label class="label" for="momento">¿Cuándo te gustaría avanzar?</label>
+                <select id="momento" name="momento" aria-describedby="err-momento">
+                  <option value="">Elige una opción</option>
+                  <option>Explorando</option>
+                  <option>1–3 meses</option>
+                  <option>3–6 meses</option>
+                  <option>Más de 6 meses</option>
+                  <option>Sin fecha</option>
+                </select>
+                <p class="error" id="err-momento" role="alert"></p>
+              </div>
+
+              <!-- Campo condicional: solo aparece cuando el motivo es profesional o la etapa
+                   indica una obra en curso. En ese caso sí es obligatorio. -->
+              <div class="field" id="field-profesional">
+                <label class="label" for="profesional">¿Hay algún profesional o equipo a cargo?</label>
+                <select id="profesional" name="profesional" aria-describedby="err-profesional">
+                  <option value="">Elige una opción</option>
+                  <option>Arquitecto</option>
+                  <option>Constructora</option>
+                  <option>Eléctrico</option>
+                  <option>Aún no</option>
+                  <option>Otro</option>
+                </select>
+                <p class="error" id="err-profesional" role="alert"></p>
+              </div>
+
+              <!-- Detalles que la conversación puede resolver: quedan disponibles, pero no
+                   bloquean el paso 1. El botón que los pliega lo crea `app.js`, así que sin
+                   JavaScript los tres campos se muestran completos. -->
+              <div class="optional-block" id="optional-block">
+                <div class="optional-fields" id="optional-fields">
+                  <div class="field">
+                    <label class="label" for="tipo">¿En qué tipo de proyecto estás?</label>
+                    <p class="help" id="help-tipo">Opcional.</p>
+                    <select id="tipo" name="tipo" aria-describedby="help-tipo err-tipo">
+                      <option value="">Elige una opción</option>
+                      <option>Casa nueva</option>
+                      <option>Remodelación</option>
+                      <option>Casa terminada</option>
+                      <option>Segunda vivienda</option>
+                      <option>Proyecto profesional</option>
+                      <option>Otro</option>
+                    </select>
+                    <p class="error" id="err-tipo" role="alert"></p>
+                  </div>
+
+                  <div class="field">
+                    <label class="label" for="etapa">¿En qué etapa está?</label>
+                    <p class="help" id="help-etapa">Opcional.</p>
+                    <select id="etapa" name="etapa" aria-describedby="help-etapa err-etapa">
+                      <option value="">Elige una opción</option>
+                      <option>Idea</option>
+                      <option>Anteproyecto</option>
+                      <option>Obra en curso</option>
+                      <option>Terminada</option>
+                      <option>Sistema existente</option>
+                    </select>
+                    <p class="error" id="err-etapa" role="alert"></p>
+                  </div>
+
+                  <div class="field">
+                    <label class="label" for="equipos">¿Qué sistemas o marcas ya tienes?</label>
+                    <p class="help" id="help-equipos">Opcional. No envíes contraseñas, códigos ni datos de acceso.</p>
+                    <textarea id="equipos" name="equipos" rows="3" maxlength="500" aria-describedby="help-equipos count-equipos err-equipos"></textarea>
+                    <p class="help mono" id="count-equipos" data-counter-for="equipos" aria-live="polite">0 / 500</p>
+                    <p class="error" id="err-equipos" role="alert"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="actions actions--form">
+                <button class="btn btn--primary" type="button" id="to-step-2">Continuar con mis datos</button>
+              </div>
+            </fieldset>
+
+            <!-- ---------- PASO 2 ---------- -->
+            <fieldset class="step-panel" id="step-2" hidden>
+              <legend class="visually-hidden">Paso 2 de 2 — Contacto</legend>
+
+              <div class="field">
+                <label class="label" for="nombre">¿Cómo te llamas?</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido" minlength="2" maxlength="80" autocomplete="name" aria-describedby="err-nombre">
+                <p class="error" id="err-nombre" role="alert"></p>
+              </div>
+
+              <div class="field">
+                <label class="label" for="empresa">Empresa o estudio</label>
+                <p class="help" id="help-empresa">Obligatorio para arquitectos y constructoras.</p>
+                <input type="text" id="empresa" name="empresa" maxlength="120" autocomplete="organization" aria-describedby="help-empresa err-empresa">
+                <p class="error" id="err-empresa" role="alert"></p>
+              </div>
+
+              <div class="field">
+                <label class="label" for="correo">Correo de contacto</label>
+                <input type="email" id="correo" name="correo" placeholder="nombre@empresa.cl" maxlength="120" autocomplete="email" aria-describedby="err-correo">
+                <p class="error" id="err-correo" role="alert"></p>
+              </div>
+
+              <div class="field">
+                <label class="label" for="telefono">Teléfono</label>
+                <p class="help" id="help-telefono">Incluye código de país si corresponde.</p>
+                <input type="tel" id="telefono" name="telefono" maxlength="24" autocomplete="tel" aria-describedby="help-telefono err-telefono">
+                <p class="error" id="err-telefono" role="alert"></p>
+              </div>
+
+              <fieldset class="field" id="field-canal">
+                <legend class="label">¿Cómo prefieres que te contactemos?</legend>
+                <div class="choices">
+                  <label class="choice"><input type="radio" name="canal" value="Correo" aria-describedby="err-canal"><span>Correo</span></label>
+                  <label class="choice"><input type="radio" name="canal" value="Teléfono" aria-describedby="err-canal"><span>Teléfono</span></label>
+                </div>
+                <p class="help">WhatsApp no aparece como opción porque el canal no está habilitado.</p>
+                <p class="error" id="err-canal" role="alert"></p>
+              </fieldset>
+
+              <p class="help"><span class="mono">Horario preferido:</span> <span class="pending">[PENDIENTE DE CONFIRMACIÓN]</span>. No publicamos bloques de atención hasta confirmarlos.</p>
+
+              <fieldset class="field" id="field-consent">
+                <legend class="visually-hidden">Autorizaciones</legend>
+                <label class="choice choice--block">
+                  <input type="checkbox" id="consentimiento" name="consentimiento" aria-describedby="err-consentimiento">
+                  <span>Autorizo a Cromo Systems a usar estos datos para responder esta solicitud.</span>
+                </label>
+                <p class="error" id="err-consentimiento" role="alert"></p>
+                <label class="choice choice--block">
+                  <input type="checkbox" id="comunicaciones" name="comunicaciones">
+                  <span>Quiero recibir información futura de Cromo Systems.</span>
+                </label>
+              </fieldset>
+
+              <p class="microcopy">Al enviar, aceptas el tratamiento de tus datos para responder esta solicitud según la Política de Privacidad. <span class="pending">[PENDIENTE DE URL DE POLÍTICA]</span></p>
+
+              <div class="actions actions--form">
+                <button class="btn btn--primary" type="submit" id="submit-lead">Enviar solicitud de diagnóstico</button>
+                <button class="btn btn--ghost" type="button" id="to-step-1">Volver al paso anterior</button>
+              </div>
+            </fieldset>
+          </form>
+
+          <!-- ---------- CONFIRMACIÓN ---------- -->
+          <div class="confirmation" id="confirmation" hidden tabindex="-1">
+            <p class="tag tag--flag">SIN BACKEND CONECTADO</p>
+            <h3>Tu solicitud no se envió</h3>
+            <p>Esta versión del sitio no tiene un servicio de recepción conectado. La información que escribiste quedó únicamente en este navegador y no se transmitió a Cromo Systems ni a un tercero.</p>
+            <p>Cuando el backend esté conectado, la solicitud se registrará y se revisará zona, alcance y etapa del proyecto antes de proponerte una conversación. Si el caso requiere un especialista eléctrico, estructural o de seguridad profesional, se indicará con la información disponible.</p>
+            <p class="mono mono-block">Formato de código de solicitud: CS-LEAD-26-[PENDIENTE DE CORRELATIVO]. No se asignó un código porque no hubo registro.</p>
+            <p class="note">No envíes contraseñas, códigos ni datos sensibles por correo o mensajería.</p>
+            <div class="actions actions--form">
+              <a class="btn btn--ghost" href="#como-trabajamos" data-cta="confirmacion">Ver cómo trabajamos</a>
+              <button class="btn btn--ghost" type="button" id="back-to-form">Volver al formulario</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <div class="site-footer__brand">
+      <p class="brand__name">Cromo Systems</p>
+      <p class="brand__tag">Automatización, energía y seguridad residencial</p>
+      <p>Diseño, integración y documentación para casas, parcelas y proyectos.</p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="Navegación del pie">
+      <ul role="list">
+        <li><a href="#casa">Para tu casa</a></li>
+        <li><a href="#proyectos">Para proyectos</a></li>
+        <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+        <li><a href="#evidencia">Evidencia</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li>Política de Privacidad <span class="pending">[PENDIENTE DE URL]</span></li>
+        <li>Términos y condiciones <span class="pending">[PENDIENTE DE URL]</span></li>
+      </ul>
+    </nav>
+
+    <div class="site-footer__legal">
+      <dl class="legal-list">
+        <dt>Área de atención</dt><dd class="pending">[PENDIENTE DE CONFIRMACIÓN]</dd>
+        <dt>Horario de contacto</dt><dd class="pending">[PENDIENTE DE CONFIRMACIÓN]</dd>
+        <dt>Teléfono</dt><dd class="pending">[PENDIENTE DE CONFIRMACIÓN]</dd>
+        <dt>Correo</dt><dd class="pending">[PENDIENTE DE CONFIRMACIÓN]</dd>
+      </dl>
+      <p class="microcopy">No envíes credenciales, códigos de acceso ni información sensible por canales no acordados.</p>
+      <p class="mono">© 2026 Cromo Systems SpA. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

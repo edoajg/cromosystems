@@ -1,0 +1,46 @@
+# Secrets and environment files
+.env
+.env.*
+*.pem
+*.key
+
+# Dependency and generated directories
+node_modules/
+coverage/
+dist/
+build/
+.tmp/
+tmp/
+
+# OS/editor and temporary artifacts
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Local QA artifacts and screenshots
+screenshots/
+artifacts/
+playwright-report/
+test-results/
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# Local backups
+*.bak-*
+web/index.html.bak-*
+
+# Internal planning, research, QA, and implementation reports
+WEB-*.md
+DESIGN-PROPOSAL-REPORT.md
+DOMOTICA-GROWTH-BRIEF.md
+DOMOTICA-TECHNICAL-PLAN.md
+PLAN.md
+PUBLISH-REPORT.md
+
+# Visual proposal is reference-only; production source is web/
+design/proposal/
