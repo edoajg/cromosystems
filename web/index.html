@@ -94,6 +94,14 @@
 
   <!-- ================= HERO — composición asimétrica Decide / Learn ================= -->
   <section class="section section--hero" aria-labelledby="hero-title">
+
+    <!-- Capas decorativas del hero. Ambas son `aria-hidden`, no reciben puntero y
+         quedan bajo el contenido: el canvas dibuja la banda líquida por WebGL y el
+         velo aporta scanlines y el contraste que mantiene legible el texto. Si
+         `liquid-hero.js` no carga o WebGL falla, styles.css resuelve el fondo. -->
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-veil" aria-hidden="true"></div>
+
     <div class="shell split split--hero">
 
       <div class="split__decide">
@@ -883,5 +891,6 @@
 </footer>
 
 <script src="app.js" defer></script>
+<script src="liquid-hero.js" defer></script>
 </body>
 </html>
